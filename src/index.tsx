@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { Header } from "./Header";
+import Header from "./Header";
 
 const Content = () => {
   return (
@@ -24,9 +24,11 @@ const Content = () => {
 const App = () => {
   return (
     <React.Fragment>
-      <Header title="React" title="=2023" />
+      <Header title="React" year={2023} />
       <Content />
-      <Header title="TS" title="=2025" />
+      <Header title="TS" year={2083} />
+      <Article title="NEWS!" description="Lorem BLATT" autor="John Doe" />
+      <Article title="NEWS_$$$$$" description="Lorem BLATT-aaaaa" autor="John lee" />
     </React.Fragment>
   );
 };
