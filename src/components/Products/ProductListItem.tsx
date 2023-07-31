@@ -20,12 +20,18 @@ type Props = {
      image,
  }: Props) => {
     const [count, setCount] = useState<number>(1)
+    const [color, setColor] = useState<string>("green")
+    //const [color, setColor] = useState<string>("red")
 
     const onIncrementClick = () => {
        setCount((prevState) => prevState+1) 
     }
     const onDecrementClick = () => {
         setCount((prevState) => prevState-1) 
+     }
+
+    const changeColor = () => {
+      setColor((prevState) => prevState === "green" ? "red" : "green")   
      }
 
 
@@ -44,6 +50,10 @@ type Props = {
                     <div className="product-price">
                         Price: <span>${price}</span>
                     </div>
+                    <div>
+                        color: {color}
+                    </div>
+                    <button onClick={changeColor}>Change color</button>
                     <div className="product-quantity">
                         <Button variant="outlined" onClick={onDecrementClick} disabled={count <= 1}>-</Button>
                         <TextField value={count} size="small" />
