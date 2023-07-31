@@ -1,6 +1,6 @@
 import { Button, Card, CardContent, TextField } from '@mui/material'
 import './ProductListItem.scss'
-import { Component, ReactNode } from 'react'
+import { Component, useState } from 'react'
 
 type Props = {
     title: string
@@ -11,46 +11,29 @@ type Props = {
     image: string
 }
 
-type State = {
-    count: number
-    color: string
-}
+ const ProductListItem = ({
+     title,
+     description,
+     type,
+     capacity,
+     price,
+     image,
+ }: Props) => {
+    const [count, setCount] = useState<number>(1)
 
-class ProductListItem extends Component<Props, State> {
-    constructor(props: Props) {
-        super(props)
-        this.state = {
-            count: 1,
-            color: 'green',
-        }
-        this.onIncrementClick = this.onIncrementClick.bind(this)
+    const onIncrementClick = () => {
+       setCount((prevState) => prevState+1) 
     }
+    const onDecrementClick = () => {
+        setCount((prevState) => prevState-1) 
+     }
 
-    onIncrementClick() {
-        this.setState((prevState) => ({
-            count: prevState.count + 1,
-        }))
-    }
 
-    onDecrementClick() {
-        this.setState((prevState) => ({
-            count: prevState.count - 1,
-        }))
-    }
-    changeColor = () => {
-        this.setState((prevState) => ({
-            color: prevState.color === 'green' ? 'red' : 'green',
-        }))
-    }
-
-    render() {
-        const { title, description, type, capacity, price, image } = this.props
-
-        return (
-            <Card variant="outlined">
+     return (
+           <Card variant="outlined">
                 <CardContent>
                     <div className="product-image">
-                        <img src={image} alt="title" />
+                        <img src={image} alt={title} />
                     </div>
                     <h2 className="product-title">{title}</h2>
                     <p className="product-description">{description}</p>
@@ -61,28 +44,12 @@ class ProductListItem extends Component<Props, State> {
                     <div className="product-price">
                         Price: <span>${price}</span>
                     </div>
-
-                    <div>
-                        Color: <span className={this.state.color}>
-                        {this.state.color}</span>
-                    </div>
-                    <button onClick={this.changeColor}>Change color</button>
-
                     <div className="product-quantity">
-                        <Button
-                            variant="outlined"
-                            onClick={() => this.onDecrementClick()}
-                            disabled={this.state.count <= 1}
-                        >
-                            -
-                        </Button>
-                        <TextField value={this.state.count} size="small" />
-                        <Button
-                            variant="outlined"
-                            onClick={this.onIncrementClick}
-                        >
-                            +
-                        </Button>
+                        <Button variant="outlined" onClick={onDecrementClick} disabled={count <= 1}>-</Button>
+                        <TextField value={count} size="small" />
+                        <Button variant="outlined" 
+                        onClick={onIncrementClick}
+                        >+</Button>
                     </div>
                     <div className="btns-wrap">
                         <Button variant="outlined">Add to cart</Button>
@@ -91,6 +58,5 @@ class ProductListItem extends Component<Props, State> {
             </Card>
         )
     }
-}
 
 export default ProductListItem
