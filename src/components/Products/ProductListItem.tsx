@@ -63,10 +63,10 @@ class ProductListItem extends Component<Props, State> {
                     </div>
 
                     <div>
-                        Color: <span></span>
-                        {this.state.color}
+                        Color: <span className={this.state.color}>
+                        {this.state.color}</span>
                     </div>
-                    <button>Change color</button>
+                    <button onClick={this.changeColor}>Change color</button>
 
                     <div className="product-quantity">
                         <Button
