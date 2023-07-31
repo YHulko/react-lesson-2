@@ -1,6 +1,6 @@
 import { Button, Card, CardContent, TextField } from '@mui/material'
 import './ProductListItem.scss'
-import { Component, ReactNode } from 'react'
+import { Component } from 'react'
 
 type Props = {
     title: string
@@ -13,7 +13,6 @@ type Props = {
 
 type State = {
     count: number
-    color: string
 }
 
 class ProductListItem extends Component<Props, State> {
@@ -21,9 +20,10 @@ class ProductListItem extends Component<Props, State> {
         super(props)
         this.state = {
             count: 1,
-            color: 'green',
         }
+
         this.onIncrementClick = this.onIncrementClick.bind(this)
+        this.onDecrementClick = this.onDecrementClick.bind(this)
     }
 
     onIncrementClick() {
@@ -37,11 +37,6 @@ class ProductListItem extends Component<Props, State> {
             count: prevState.count - 1,
         }))
     }
-    changeColor = () => {
-        this.setState((prevState) => ({
-            color: prevState.color === 'green' ? 'red' : 'green',
-        }))
-    }
 
     render() {
         const { title, description, type, capacity, price, image } = this.props
@@ -50,7 +45,7 @@ class ProductListItem extends Component<Props, State> {
             <Card variant="outlined">
                 <CardContent>
                     <div className="product-image">
-                        <img src={image} alt="title" />
+                        <img src={image} alt={title} />
                     </div>
                     <h2 className="product-title">{title}</h2>
                     <p className="product-description">{description}</p>
@@ -61,18 +56,10 @@ class ProductListItem extends Component<Props, State> {
                     <div className="product-price">
                         Price: <span>${price}</span>
                     </div>
-
-                    <div>
-                        Color: <span className={this.state.color}>
-                        {this.state.color}</span>
-                    </div>
-                    <button onClick={this.changeColor}>Change color</button>
-
                     <div className="product-quantity">
                         <Button
                             variant="outlined"
-                            onClick={() => this.onDecrementClick()}
-                            disabled={this.state.count <= 1}
+                            onClick={this.onDecrementClick}
                         >
                             -
                         </Button>
@@ -92,5 +79,18 @@ class ProductListItem extends Component<Props, State> {
         )
     }
 }
+
+// const ProductListItem = ({
+//     title,
+//     description,
+//     type,
+//     capacity,
+//     price,
+//     image,
+// }: Props) => {
+//     return (
+
+//     )
+// }
 
 export default ProductListItem
