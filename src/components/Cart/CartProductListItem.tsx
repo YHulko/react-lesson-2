@@ -6,8 +6,12 @@ type Props = {
     productCount: number
 }
 
-const CartProductListItem = ({}) => {
-    return <div>CartProductListItem</div>
+const CartProductListItem = ({product, productCount}: Props) => {
+    return   (
+    <div>
+     {product.title}: {productCount}
+    </div>
+    )
 }
 
 export default CartProductListItem

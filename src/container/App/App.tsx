@@ -46,10 +46,10 @@ const App = (props: Props) => {
                         element={<Home addProductToCart={addProductToCart} />}
                     />
                     <Route path="/About-Us" element={<AboutUs />} />
-                    <Route path="/cart" element={<CartPage />} />
+                    <Route path="/cart" element={<CartPage productsInCart={productsInCart} />} />
                 </Routes>
             </Container>
-            <button onClick={() => addProductToCart(2, 5)}>add to cart</button>
+          <h5>КОНЕЦ</h5>
         </StyledEngineProvider>
     )
 }
