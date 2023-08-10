@@ -8,9 +8,7 @@ type Props = {
 }
 
 const CartProductListItemExtended = ({ product, productCount }: Props) => {
-    function removeProductFromCart(id: number): void {
-        throw new Error('Function not implemented.')
-    }
+    
 
     return (
         <Grid item xs={12} sm={4}>
@@ -39,3 +37,4 @@ const CartProductListItemExtended = ({ product, productCount }: Props) => {
 }
 
 export default CartProductListItemExtended
+

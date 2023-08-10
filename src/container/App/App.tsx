@@ -8,6 +8,7 @@ import Home from 'pages/Home/Home'
 import CartPage from 'pages/cart/CartPage'
 import AboutUs from 'pages/AboutUs/AboutUs'
 
+
 type Props = {}
 
 type productsInCartType = {
@@ -34,7 +35,7 @@ const App = (props: Props) => {
             return prevProductsInCart
         })
     }
-
+   
     return (
         <StyledEngineProvider injectFirst>
             <CssBaseline />
@@ -46,7 +47,7 @@ const App = (props: Props) => {
                         element={<Home addProductToCart={addProductToCart} />}
                     />
                     <Route path="/About-Us" element={<AboutUs />} />
-                    <Route path="/cart" element={<CartPage productsInCart={productsInCart} />} />
+                    <Route path="/cart" element={<CartPage productsInCart={productsInCart} removeProductFromCart={removeProductFromCart} />} />
                 </Routes>
             </Container>
           <h5>КОНЕЦ</h5>
