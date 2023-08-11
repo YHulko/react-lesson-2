@@ -7,6 +7,7 @@ import { Container } from '@mui/material'
 import Home from 'pages/Home/Home'
 import CartPage from 'pages/cart/CartPage'
 import AboutUs from 'pages/AboutUs/AboutUs'
+import {omit} from 'lodash'
 
 
 type Props = {}
@@ -29,11 +30,15 @@ const App = (props: Props) => {
     }
 
     const removeProductFromCart = (id: number) => {
-        setProductsInCart((prevState) => {
-            let prevProductsInCart = { ...prevState }
-            delete prevProductsInCart[id]
-            return prevProductsInCart
-        })
+        setProductsInCart((prevState) => omit(prevState, [id]))
+        }
+
+    const changeProductQuantity = (id: number, count: number) => {
+        setProductsInCart((prevState) => ({
+            ...prevState,
+            [id]: count,
+            
+    }    ))
     }
    
     return (
@@ -47,7 +52,8 @@ const App = (props: Props) => {
                         element={<Home addProductToCart={addProductToCart} />}
                     />
                     <Route path="/About-Us" element={<AboutUs />} />
-                    <Route path="/cart" element={<CartPage productsInCart={productsInCart} removeProductFromCart={removeProductFromCart} />} />
+                    <Route path="/cart" element={<CartPage productsInCart={productsInCart} 
+                    removeProductFromCart={removeProductFromCart} changeProductQuantity={changeProductQuantity}/>} />
                 </Routes>
             </Container>
           <h5>КОНЕЦ</h5>
@@ -55,3 +61,5 @@ const App = (props: Props) => {
     )
 }
 export default App
+
+
