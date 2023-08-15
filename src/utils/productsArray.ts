@@ -7,6 +7,7 @@ export type Product = {
     capacity: string
     price: number
     image: string
+    category: string
 }
 
 const productsArray:Product[] = [
@@ -17,7 +18,8 @@ const productsArray:Product[] = [
         type: 'phone',
         capacity: '64',
         price: 1000,
-        image: "/images/1.webp"
+        image: "/images/1.webp",
+        category: "phone"
     },
     {
         id:2,
@@ -26,7 +28,8 @@ const productsArray:Product[] = [
         type: 'phone',
         capacity: '64',
         price: 18000,
-        image: "/images/2.webp"
+        image: "/images/2.webp",
+        category: "phone"
     },
     {
         id:3,
@@ -35,7 +38,8 @@ const productsArray:Product[] = [
         type: 'phone',
         capacity: '64',
         price: 71000,
-        image: "/images/3.webp"
+        image: "/images/3.webp",
+        category: "phone"
     },
     {
         id:4,
@@ -44,7 +48,8 @@ const productsArray:Product[] = [
         type: 'phone',
         capacity: '64',
         price: 16000,
-        image: "/images/4.webp"
+        image: "/images/4.webp",
+        category: "phone"
     },
     {
         id:5,
@@ -53,7 +58,8 @@ const productsArray:Product[] = [
         type: 'phone',
         capacity: '64',
         price: 15000,
-        image: "/images/5.webp"
+        image: "/images/5.webp",
+      category: ""
     },
     {
         id:6,
@@ -62,7 +68,8 @@ const productsArray:Product[] = [
         type: 'phone',
         capacity: '64',
         price: 11000,
-        image: "/images/6.webp"
+        image: "/images/6.webp",
+        category: ""
     },
 ]
 export const getProductsObject=(array:Product[]) => 

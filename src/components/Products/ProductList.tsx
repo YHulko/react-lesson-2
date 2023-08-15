@@ -5,8 +5,12 @@ import productsArray from 'utils/productsArray'
 
 type Props = {
     addProductToCart: (id: number, count: number) => void
+    toggleLike: (id: number) => void
+    productsLikeState: {
+        [id: number]: boolean
+    }
 }
-const ProductList = ({addProductToCart}: Props) => {
+const ProductList = ({addProductToCart, productsLikeState, toggleLike}: Props) => {
     return (
         <div>
             <Typography
@@ -22,7 +26,7 @@ const ProductList = ({addProductToCart}: Props) => {
             </Typography>
 
             <Grid container spacing={4}>
-                {productsArray.map(
+                {productsArray.filter((item) => item.category==="phone").map(
                     ({
                         id,
                         title,
@@ -42,6 +46,8 @@ const ProductList = ({addProductToCart}: Props) => {
                                 price={price}
                                 image={image}
                                 addProductToCart={addProductToCart}
+                                isLiked={productsLikeState[id]}
+                                toggleLike={toggleLike}
                             />
                         </Grid>
                     )

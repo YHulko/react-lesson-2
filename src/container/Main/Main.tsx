@@ -7,7 +7,9 @@ type Props = {
 const Main = ({addProductToCart}: Props) => {
   return ( 
            <Container>
-              <Home addProductToCart={addProductToCart}/>
+              <Home addProductToCart={addProductToCart} productsLikeState={{}} toggleLike={function (id: number): void {
+        throw new Error('Function not implemented.')
+      } }/>
            </Container>
   )
 }

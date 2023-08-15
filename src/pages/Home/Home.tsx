@@ -3,11 +3,16 @@ import Reviews from 'components/Reviews/Reviews'
 
 type Props = {
   addProductToCart:(id: number, count: number) => void
+  toggleLike: (id: number) => void
+  productsLikeState: {
+    [id: number]: boolean
+  }
+  
 }
-const Home = ({addProductToCart}: Props) => {
+const Home = ({addProductToCart,productsLikeState, toggleLike} : Props) => {
   return (
   <>
-  <ProductList addProductToCart={addProductToCart}/>
+  <ProductList addProductToCart={addProductToCart} productsLikeState={productsLikeState} toggleLike={toggleLike}/>
   <Reviews />
   </>
   )

@@ -14,7 +14,8 @@ type Props = {
     price: number
     image: string
     addProductToCart: (id: number, count: number) => void
-    isLiked?: boolean
+    toggleLike: (id: number) => void
+    isLiked: boolean
 }
 
  const ProductListItem = ({
@@ -26,7 +27,8 @@ type Props = {
      price,
      image,
      addProductToCart,
-     isLiked=true
+     isLiked,
+     toggleLike
  }: Props) => {
     const [count, setCount] = useState<number>(1)
     const [color, setColor] = useState<string>("green")
@@ -47,7 +49,7 @@ type Props = {
      return (
            <Card variant="outlined">
                 <CardContent>
-                    <Button variant='outlined'>
+                    <Button variant='outlined' onClick={() => toggleLike(id)}>
                         {isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                     </Button>
                     <div className="product-image">
