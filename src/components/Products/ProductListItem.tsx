@@ -4,6 +4,7 @@ import { Component, useState } from 'react'
 import Quantity from 'components/Quantity/Quantity'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { useAppDispatch, useAppSelector } from 'redux/hooks';
 
 type Props = {
     id: number
@@ -14,7 +15,7 @@ type Props = {
     price: number
     image: string
     addProductToCart: (id: number, count: number) => void
-    isLiked?: boolean
+    
 }
 
  const ProductListItem = ({
@@ -26,7 +27,7 @@ type Props = {
      price,
      image,
      addProductToCart,
-     isLiked=true
+     
  }: Props) => {
     const [count, setCount] = useState<number>(1)
     const [color, setColor] = useState<string>("green")
@@ -42,12 +43,16 @@ type Props = {
     const changeColor = () => {
       setColor((prevState) => prevState === "green" ? "red" : "green")   
      }
-
+const isLiked = useAppSelector((state) => state.productsLikeState[id])
+const dispatch = useAppDispatch()
 
      return (
            <Card variant="outlined">
                 <CardContent>
-                    <Button variant='outlined'>
+                    <Button variant='outlined' 
+                    onClick={() => {
+                     {dispatch({type: "toggle-like", id})}}
+                    }>
                         {isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                     </Button>
                     <div className="product-image">
