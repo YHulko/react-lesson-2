@@ -45,13 +45,13 @@ const dispatch = useAppDispatch()
                        count={productCount}
                        onDecrementClick={() =>{
                         if (productCount <= 1) {
-                            removeProductFromCart(product.id)
+                            dispatch({type: "remove-product-from-cart", id:product.id})
                          } else {
-                            changeProductQuantity(product.id, productCount-1)
+                            dispatch({type: "change-product-quantity", id:product.id, count:productCount-1})
                         }}} 
-                    onIncrementClick={() => changeProductQuantity(product.id, productCount+1)}
+                    onIncrementClick={() => dispatch({type: "change-product-quantity", id:product.id, count:productCount+1})}
                     minCount={0} />
-                    <Button variant="outlined" onClick={() => removeProductFromCart(product.id)}>
+                    <Button variant="outlined" onClick={() => dispatch({type: "remove-product-from-cart", id:product.id})}>
                         <DeleteIcon />
                         Remove
                     </Button>

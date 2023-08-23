@@ -1,5 +1,4 @@
 import AppBar from '@mui/material/AppBar'
-
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
@@ -37,7 +36,7 @@ const Header = ({productsInCart}: Props) => {
                         <Logo />
                     </Typography>
                     <Menu />
-                    <CartHeader productsInCart={productsInCart} />
+                    <CartHeader />
                 </Toolbar>
             </Container>
         </AppBar>

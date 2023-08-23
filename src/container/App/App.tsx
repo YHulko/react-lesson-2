@@ -52,7 +52,7 @@ const App = (props: Props) => {
                         element={<Home addProductToCart={addProductToCart} />}
                     />
                     <Route path="/About-Us" element={<AboutUs />} />
-                    <Route path="/cart" element={<CartPage productsInCart={productsInCart} 
+                    <Route path="/cart" element={<CartPage  
                     removeProductFromCart={removeProductFromCart} changeProductQuantity={changeProductQuantity}/>} />
                 </Routes>
             </Container>
