@@ -10,11 +10,9 @@ import Menu from 'components/Menu/Menu'
 import CartHeader from 'components/CardHeader/CartHeader'
 
 type Props = {
-    productsInCart: {
-     [id: number]: number
-    }
+    
 }
-const Header = ({productsInCart}: Props) => {
+const Header = (props: Props) => {
     return (
         <AppBar position="static" className="app-bar">
             <Container>

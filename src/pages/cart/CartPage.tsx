@@ -6,14 +6,10 @@ import { useAppSelector } from 'redux/hooks'
 
 
 type Props = {
-    
-    removeProductFromCart : 
-        (id: number)=> void
-   
-    changeProductQuantity : (id: number, count: number)=> void
+        
  }
 
-const CartPage = ({ removeProductFromCart, changeProductQuantity }: Props) => {
+const CartPage = (props: Props) => {
 
 const productsInCart = useAppSelector((state) => state.productsInCart)
 
@@ -27,8 +23,7 @@ const productsInCart = useAppSelector((state) => state.productsInCart)
             ></Typography>
              <div>
                 <Grid container spacing={4}>
-                   <CartPr productsInCart={productsInCart} CartItem={CartProductListItemExtended} 
-                   removeProductFromCart={removeProductFromCart} changeProductQuantity={changeProductQuantity}/>
+                   <CartPr productsInCart={productsInCart} CartItem={CartProductListItemExtended} />
                 </Grid>
            {/* <CartPr productsInCart={productsInCart} />} */}
             </div>      

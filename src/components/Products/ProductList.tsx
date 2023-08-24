@@ -4,9 +4,9 @@ import { Grid } from '@mui/material'
 import productsArray from 'utils/productsArray'
 
 type Props = {
-    addProductToCart: (id: number, count: number) => void
+    
 }
-const ProductList = ({addProductToCart}: Props) => {
+const ProductList = (props: Props) => {
     return (
         <div>
             <Typography
