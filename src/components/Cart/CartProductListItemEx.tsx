@@ -5,6 +5,7 @@ import Quantity from 'components/Quantity/Quantity'
 import { useAppDispatch, useAppSelector } from 'redux/hooks'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { changeProductQuantity, removeProductFromCart } from 'redux/cartReducer'
 
 type Props = {
     product: Product
@@ -13,7 +14,7 @@ type Props = {
     changeProductQuantity: (id: number, count: number) => void
 }
 
-const CartProductListItemExtended = ({ product, productCount, removeProductFromCart, changeProductQuantity }: Props) => {
+const CartProductListItemExtended = ({ product, productCount  }: Props) => {
     
 const isLiked= useAppSelector((state) => state.productsLikeState[product.id])
 const dispatch = useAppDispatch()
@@ -45,13 +46,12 @@ const dispatch = useAppDispatch()
                        count={productCount}
                        onDecrementClick={() =>{
                         if (productCount <= 1) {
-                            dispatch({type: "remove-product-from-cart", id:product.id})
-                         } else {
-                            dispatch({type: "change-product-quantity", id:product.id, count:productCount-1})
-                        }}} 
-                    onIncrementClick={() => dispatch({type: "change-product-quantity", id:product.id, count:productCount+1})}
+                            dispatch(removeProductFromCart (product.id))
+                         } else {dispatch(changeProductQuantity({id:product.id, count:productCount-1}))}
+                        }} 
+                    onIncrementClick={() => dispatch(changeProductQuantity({id:product.id, count:productCount+1}))}
                     minCount={0} />
-                    <Button variant="outlined" onClick={() => dispatch({type: "remove-product-from-cart", id:product.id})}>
+                    <Button variant="outlined" onClick={() => dispatch(removeProductFromCart (product.id))}>
                         <DeleteIcon />
                         Remove
                     </Button>
