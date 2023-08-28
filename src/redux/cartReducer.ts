@@ -1,4 +1,4 @@
-import { AnyAction, createSlice } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit"
 import { omit } from "lodash"
 
 
