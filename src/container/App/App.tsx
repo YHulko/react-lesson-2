@@ -7,6 +7,7 @@ import Home from 'pages/Home/Home'
 import CartPage from 'pages/cart/CartPage'
 import AboutUs from 'pages/AboutUs/AboutUs'
 import CheckoutPage from 'pages/Checkout/CheckoutPage'
+import ProductPage from 'pages/Product/ProductPage'
 
 
 
@@ -30,6 +31,7 @@ const App = (props: Props) => {
                     <Route path="/About-Us" element={<AboutUs />} />
                     <Route path="/cart" element={<CartPage/>} />
                     <Route path="/checkout" element={<CheckoutPage/>} />
+                    <Route path="/products/:id" element={<ProductPage/>} />
                 </Routes>
             </Container>
           <h5>КОНЕЦ</h5>

@@ -7,6 +7,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import { toggleLike } from 'redux/likeReducer';
 import { addProductToCart } from 'redux/cartReducer';
+import { Link } from 'react-router-dom';
 
 type Props = {
     id: number
@@ -61,7 +62,7 @@ const dispatch = useAppDispatch()
                     <div className="product-image">
                         <img src={image} alt={title} />
                     </div>
-                    <h2 className="product-title">{title}</h2>
+                    <h2 className="product-title"><Link to ={`/products/${id}`}>{title}</Link></h2>
                     <p className="product-description">{description}</p>
                     <div className="product-features">Type: {type}</div>
                     <div className="product-features">
